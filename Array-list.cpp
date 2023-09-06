@@ -39,9 +39,9 @@ void delete_list_front(){
         return;
     }
 
-    item=list[pos];
+    item=list[last_index];
     printf("The item %d is deleted from %d\n",item,last_index);
-    list[pos]=list[pos+1];
+    
     last_index--;
 }
 
@@ -51,8 +51,8 @@ insert(1);
 insert(2);
 insert(3);
 insert(4);
-insert(5);
-delete_list();
+
+delete_list_front();
 
     return 0;
 }
