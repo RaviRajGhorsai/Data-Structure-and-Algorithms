@@ -1,12 +1,10 @@
 #include<stdio.h>
+#define n 7
 
 int arr[] = {5,3,8,1,4,6,27};
-int n = sizeof(arr)/4;
 
 int partition(int start, int end){
-    int pivot = start+1;
-    int temp;
-
+    int pivot = start+1, temp;
     while(start<end){
         while(arr[start]<=arr[pivot]){
             start++;
@@ -15,10 +13,10 @@ int partition(int start, int end){
             end--;
         }
         if(start<end){
-            temp=arr[start];
-            arr[start]=arr[end];
-            arr[end]=temp;
-        }
+            temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+        }       
     }
     temp = arr[pivot];
     arr[pivot] = arr[end];
@@ -26,11 +24,11 @@ int partition(int start, int end){
     return end;
 }
 
-void quicksort(int start, int end){
-    if(start<end){
-        int pivot = partition(start,end);
-        quicksort(start,pivot-1);
-        quicksort(pivot+1, end);
+void quicksort(int lb, int ub){
+    if(lb<ub){
+        int loc = partition(lb,ub);
+        quicksort(lb,loc-1);
+        quicksort(loc+1,ub);       
     }
 }
 
@@ -41,6 +39,7 @@ void display(){
 }
 
 int main(){
+
     quicksort(0,n-1);
     display();
     return 0;
