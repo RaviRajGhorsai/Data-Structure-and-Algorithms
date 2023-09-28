@@ -57,7 +57,7 @@ void Delete(int pos){
             i++;
         }
         p = temp->next;
-        temp->next = temp->next->next;
+        temp->next = p->next;
         printf("\n%d is deleted at pos %d\n",p->data,pos);
         free(p);
     }
